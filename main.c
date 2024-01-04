@@ -29,3 +29,16 @@ Node* insert(Node* node, int data) {
 
     return node;
 }
+
+Node* search(Node* root, int key) {
+    if (root == NULL || root->data == key) {
+        if (root != NULL)
+            root->color = RED; // Highlight the found node
+        return root;
+    }
+
+    if (key < root->data)
+        return search(root->left, key);
+
+    return search(root->right, key);
+}
