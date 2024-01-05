@@ -42,3 +42,8 @@ Node* search(Node* root, int key) {
 
     return search(root->right, key);
 }
+
+void drawNode(int x, int y, int data, Color color) {
+    DrawRectangle(x, y, 50, 50, DARKGRAY);  // Set node color to DARKGRAY
+    DrawText(TextFormat("%d", data), x + 15, y + 20, 20, color);
+}
