@@ -5,9 +5,8 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Thu Dec 28 00:40:03 2023
+# Make data base, printed on Fri Jan  5 21:52:27 2024
 
 # Variables
 
@@ -20,7 +19,6 @@ LC_ALL = C
 # environment
 USERPROFILE = C:\Users\ISSER TECH
 # environment
- 
 LOCALAPPDATA = C:\Users\ISSER TECH\AppData\Local
 # environment
 VSCODE_CRASH_REPORTER_PROCESS_TYPE = extensionHost
@@ -37,7 +35,7 @@ MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_15236_EQFLOVAGTPRXYTBC
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_19844_PIEDYVNUPHICOFUD
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -65,7 +63,7 @@ MAKEFLAGS = pqrR
 # environment
 ONEDRIVE = C:\Users\ISSER TECH\OneDrive
 # makefile
-CURDIR := /c/Users/ISSER TECH/Desktop/myraylib2
+CURDIR := /c/Users/ISSER TECH/Documents/GitHub/ProjetAlgo
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # automatic
@@ -77,7 +75,7 @@ MFLAGS = -pqrR
 # default
 .SHELLFLAGS := -c
 # environment
-!C: = c:\Users\ISSER TECH\Desktop\myraylib2
+!C: = c:\Users\ISSER TECH\Documents\GitHub\ProjetAlgo
 # environment
 COMMONPROGRAMW6432 = C:\Program Files\Common Files
 # automatic
@@ -87,9 +85,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 15236
-# environment
-EFC_11056 = 1
+VSCODE_PID = 19844
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -184,6 +180,8 @@ TEMP = /c/Users/ISSERT~1/AppData/Local/Temp
 VSCODE_IPC_HOOK = \\.\pipe\0af91cbe5add6d5e30f509772aebf49c-1.85.1-main-sock
 # environment
 TERM = xterm-256color
+# environment
+EFC_13472 = 1
 # default
 .RECIPEPREFIX := 
 # automatic
@@ -209,9 +207,9 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 140 Stepping 1, GenuineIntel
 
 # Directories
 
-# . (device 1884102239, inode 2533274790502574): 7 files, no impossibilities.
+# . (device 1884102239, inode 1125899906909900): 8 files, no impossibilities.
 
-# 7 files, no impossibilities in 1 directories.
+# 8 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -280,7 +278,6 @@ run:
 .SUFFIXES:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
- 
 #  File has not been updated.
 
 # files hash-table stats:
@@ -291,12 +288,12 @@ run:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 13 / storage = 94 B / avg = 7 B
-# current buf: size = 8162 B / used = 94 B / count = 13 / avg = 7 B
+# strcache buffers: 1 (0) / strings = 14 / storage = 99 B / avg = 7 B
+# current buf: size = 8162 B / used = 99 B / count = 14 / avg = 7 B
 
-# strcache performance: lookups = 23 / hit rate = 43%
+# strcache performance: lookups = 24 / hit rate = 41%
 # hash-table stats:
-# Load=13/8192=0%, Rehash=0, Collisions=0/23=0%
-# Finished Make data base on Thu Dec 28 00:40:03 2023
+# Load=14/8192=0%, Rehash=0, Collisions=0/24=0%
+# Finished Make data base on Fri Jan  5 21:52:27 2024
 
  
