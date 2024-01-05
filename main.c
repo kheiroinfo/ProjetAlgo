@@ -73,3 +73,31 @@ int isMouseOverButton(int x, int y, int width, int height) {
     Vector2 mouse = GetMousePosition();
     return (mouse.x >= x && mouse.x <= x + width && mouse.y >= y && mouse.y <= y + height);
 }
+
+Node* deleteNode(Node* root, int key) {
+    if (root == NULL) return root;
+
+    if (key < root->data)
+        root->left = deleteNode(root->left, key);
+    else if (key > root->data)
+        root->right = deleteNode(root->right, key);
+    else {
+        if (root->left == NULL) {
+            Node* temp = root->right;
+            free(root);
+            return temp;
+        } else if (root->right == NULL) {
+            Node* temp = root->left;
+            free(root);
+            return temp;
+        }
+
+        Node* temp = root->right;
+        while (temp->left != NULL)
+            temp = temp->left;
+
+        root->data = temp->data; // Update the data instead of copying
+        root->right = deleteNode(root->right, temp->data);
+    }
+    return root;
+}
