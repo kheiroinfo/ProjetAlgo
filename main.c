@@ -47,6 +47,7 @@ void drawNode(int x, int y, int data, Color color) {
     DrawRectangle(x, y, 50, 50, DARKGRAY);  // Set node color to DARKGRAY
     DrawText(TextFormat("%d", data), x + 15, y + 20, 20, color);
 }
+
 void drawArrow(Vector2 start, Vector2 end, Color color) {
     DrawLineV(start, end, color);
     DrawTriangle(end, (Vector2){end.x - 10, end.y - 5}, (Vector2){end.x - 10, end.y + 5}, color);
@@ -66,4 +67,9 @@ void drawTree(Node* root, int x, int y, int horizontalSpacing) {
         drawArrow((Vector2){x + 25, y + 50}, (Vector2){x + horizontalSpacing + 25, y + 100}, DARKGRAY);
         drawTree(root->right, x + horizontalSpacing, y + 100, horizontalSpacing / 2);
     }
+}
+
+int isMouseOverButton(int x, int y, int width, int height) {
+    Vector2 mouse = GetMousePosition();
+    return (mouse.x >= x && mouse.x <= x + width && mouse.y >= y && mouse.y <= y + height);
 }
