@@ -5,8 +5,9 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Fri Jan  5 21:52:27 2024
+# Make data base, printed on Fri Jan  5 21:58:55 2024
 
 # Variables
 
@@ -35,7 +36,7 @@ MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_19844_PIEDYVNUPHICOFUD
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_2316_CMHLGMTJPQTFLZEG
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -85,7 +86,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 19844
+VSCODE_PID = 2316
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -252,6 +253,7 @@ Makefile:
 #  File has been updated.
 #  Successfully updated.
 
+ 
 # Not a target:
 .DEFAULT:
 #  Implicit rule search has not been done.
@@ -294,6 +296,6 @@ run:
 # strcache performance: lookups = 24 / hit rate = 41%
 # hash-table stats:
 # Load=14/8192=0%, Rehash=0, Collisions=0/24=0%
-# Finished Make data base on Fri Jan  5 21:52:27 2024
+# Finished Make data base on Fri Jan  5 21:58:55 2024
 
  
