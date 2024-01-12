@@ -156,3 +156,62 @@ int main() {
             searchTextBoxActive = 0; // Disable search text box
 
         }
+
+        // Check for key input to search node
+        if (IsKeyPressed(KEY_ENTER)) {
+            // Check if search text box is active
+            if (searchTextBoxActive) {
+                sscanf(searchInputText, "%d", &searchValue);
+                search(root, searchValue);
+                // Reset search input text and disable search text box
+                searchInputText[0] = '\0';
+                searchTextBoxActive = 0;
+            }
+        }
+
+        // Check if mouse is over the "rechercher" button and left mouse button is pressed
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && isMouseOverButton(0, 120, 100, 50)) {
+            // Enable search text box for input
+            searchTextBoxActive = 1;
+            addTextBoxActive = 0; // Disable add text box
+            deleteTextBoxActive = 0; // Disable delete text box
+        }
+
+        // Update the add text box input
+        if (addTextBoxActive) {
+            int key = GetKeyPressed();
+            if ((key >= 32) && (key <= 125) && (strlen(addInputText) < 49)) {
+                addInputText[strlen(addInputText)] = (char)key;
+                addInputText[strlen(addInputText) + 1] = '\0';
+            } else if (key == KEY_BACKSPACE) {
+                if (strlen(addInputText) > 0) {
+                    addInputText[strlen(addInputText) - 1] = '\0';
+                }
+            }
+        }
+
+        // Update the delete text box input
+        if (deleteTextBoxActive) {
+            int key = GetKeyPressed();
+            if ((key >= 32) && (key <= 125) && (strlen(deleteInputText) < 49)) {
+                deleteInputText[strlen(deleteInputText)] = (char)key;
+                deleteInputText[strlen(deleteInputText) + 1] = '\0';
+            } else if (key == KEY_BACKSPACE) {
+                if (strlen(deleteInputText) > 0) {
+                    deleteInputText[strlen(deleteInputText) - 1] = '\0';
+                }
+            }
+        }
+            
+        // Update the search text box input
+        if (searchTextBoxActive) {
+            int key = GetKeyPressed();
+            if ((key >= 32) && (key <= 125) && (strlen(searchInputText) < 49)) {
+                searchInputText[strlen(searchInputText)] = (char)key;
+                searchInputText[strlen(searchInputText) + 1] = '\0';
+            } else if (key == KEY_BACKSPACE) {
+                if (strlen(searchInputText) > 0) {
+                    searchInputText[strlen(searchInputText) - 1] = '\0';
+                }
+            }
+        }
