@@ -101,3 +101,58 @@ Node* deleteNode(Node* root, int key) {
     }
     return root;
 }
+int main() {
+    InitWindow(1400, 650, "Binary Tree - Animation");
+
+    Node* root = NULL;
+    int addValue;
+    int deleteValue;
+    int searchValue;
+    int addTextBoxActive = 0;
+    int deleteTextBoxActive = 0;
+    int searchTextBoxActive = 0;
+    char addInputText[50] = "\0";
+    char deleteInputText[50] = "\0";
+    char searchInputText[50] = "\0";
+
+    while (!WindowShouldClose()) {
+        // Check for key input to add node
+        if (IsKeyPressed(KEY_ENTER)) {
+            // Check if add text box is active
+            if (addTextBoxActive) {
+                sscanf(addInputText, "%d", &addValue);
+                root = insert(root, addValue);
+                // Reset add input text and disable add text box
+                addInputText[0] = '\0';
+                addTextBoxActive = 0;
+            }
+        }
+
+        // Check if mouse is over the "ajouter" button and left mouse button is pressed
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && isMouseOverButton(0, 0, 100, 50)) {
+            // Enable add text box for input
+            addTextBoxActive = 1;
+            deleteTextBoxActive = 0; // Disable delete text box
+            searchTextBoxActive = 0; // Disable search text box
+        }
+
+        // Check for key input to delete node
+        if (IsKeyPressed(KEY_ENTER)) {
+            // Check if delete text box is active
+            if (deleteTextBoxActive) {
+                sscanf(deleteInputText, "%d", &deleteValue);
+                root = deleteNode(root, deleteValue);
+                // Reset delete input text and disable delete text box
+                deleteInputText[0] = '\0';
+                deleteTextBoxActive = 0;
+            }
+        }
+
+        // Check if mouse is over the "supprimer" button and left mouse button is pressed
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && isMouseOverButton(0, 60, 100, 50)) {
+            // Enable delete text box for input
+            deleteTextBoxActive = 1;
+            addTextBoxActive = 0; // Disable add text box
+            searchTextBoxActive = 0; // Disable search text box
+
+        }
