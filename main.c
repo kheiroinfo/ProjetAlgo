@@ -215,3 +215,57 @@ int main() {
                 }
             }
         }
+
+        // Draw the tree on the window
+        BeginDrawing();
+        ClearBackground(WHITE);
+
+        // Draw the "ajouter" button
+        DrawRectangle(0, 0, 100, 50, LIGHTGRAY);
+        DrawText("ajouter", 10, 15, 20, BLACK);
+
+        // Draw the "supprimer" button
+        DrawRectangle(0, 60, 100, 50, LIGHTGRAY);
+        DrawText("supprimer", 10, 75, 20, BLACK);
+
+        // Draw the "rechercher" button
+        DrawRectangle(0, 120, 100, 50, LIGHTGRAY);
+        DrawText("rechercher", 10, 135, 20, BLACK);
+
+        // Draw the add text box
+        if (addTextBoxActive) {
+            DrawRectangle(110, 0, 150, 50, LIGHTGRAY);
+            DrawRectangleLines(110, 0, 150, 50, DARKGRAY);
+            DrawText(addInputText, 120, 12, 20, MAROON);
+            if ((GetTime() - 1) < 0.5f)
+                DrawText("_", 120 + MeasureText(addInputText, 20), 12, 20, MAROON);
+        }
+
+        // Draw the delete text box
+        if (deleteTextBoxActive) {
+            DrawRectangle(110, 60, 150, 50, LIGHTGRAY);
+            DrawRectangleLines(110, 60, 150, 50, DARKGRAY);
+            DrawText(deleteInputText, 120, 72, 20, MAROON);
+            if ((GetTime() - 1) < 0.5f)
+                DrawText("_", 120 + MeasureText(deleteInputText, 20), 72, 20, MAROON);
+        }
+
+        // Draw the search text box
+        if (searchTextBoxActive) {
+            DrawRectangle(110, 120, 150, 50, LIGHTGRAY);
+            DrawRectangleLines(110, 120, 150, 50, DARKGRAY);
+            DrawText(searchInputText, 120, 132, 20, MAROON);
+            if ((GetTime() - 1) < 0.5f)
+                DrawText("_", 120 + MeasureText(searchInputText, 20), 132, 20, MAROON);
+        }
+
+        // Draw the tree on the window
+        drawTree(root, GetScreenWidth() / 2, 80, 200);
+
+        EndDrawing();
+    }
+
+    CloseWindow();
+    return 0;
+}
+
