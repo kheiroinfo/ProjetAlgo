@@ -43,31 +43,35 @@ node *minNode(node *root)
     return root;
 }
 
-node* delete(node* root, int data) {
+node *delete(node *root, int data)
+{
     if (root == NULL)
         return NULL;
 
     if (data < root->data)
-        root->left = delete(root->left, data);
+        root->left = delete (root->left, data);
 
     else if (data > root->data)
-        root->right = delete(root->right, data);
+        root->right = delete (root->right, data);
 
-    else {
-        if (root->left == NULL) {
-            node* tmp = root->right;
+    else
+    {
+        if (root->left == NULL)
+        {
+            node *tmp = root->right;
             free(root);
             return tmp;
-
-        } else if (root->right == NULL) {
-            node* tmp = root->left;
+        }
+        else if (root->right == NULL)
+        {
+            node *tmp = root->left;
             free(root);
             return tmp;
         }
 
-        node* tmp = minNode(root->right);
+        node *tmp = minNode(root->right);
         root->data = tmp->data;
-        root->right = delete(root->right, tmp->data);
+        root->right = delete (root->right, tmp->data);
     }
 
     return root;
@@ -214,4 +218,130 @@ void drawTextBox(Rectangle textBox, char inputText[], Color textColor)
         }
         break;
     }
+}
+
+int main()
+{
+    InitWindow(GetScreenWidth(), GetScreenHeight(), "Visualisation d'une arbre binaire de recherche");
+    ToggleFullscreen();
+    SetTargetFPS(60);
+
+    node *root = NULL;
+
+    char title[47] = "Visualisation d'une arbre binaire de recherche";
+    Rectangle titleBox = {(GetScreenWidth() / 2) - (MeasureText(title, 30) / 2) - 5, 35, MeasureText(title, 30) + 10, 40};
+
+    Rectangle ajouterButton = {(GetScreenWidth() / 2) - 245, GetScreenHeight() - 60, 150, 40};
+    Rectangle supprimerButton = {(GetScreenWidth() / 2) - 75, GetScreenHeight() - 60, 150, 40};
+    Rectangle rechercherButton = {(GetScreenWidth() / 2) + 95, GetScreenHeight() - 60, 150, 40};
+
+    int addTextBoxActive = 0;
+    int deleteTextBoxActive = 0;
+    int searchTextBoxActive = 0;
+
+    Rectangle addTextBox = {(GetScreenWidth() / 2) - 245, GetScreenHeight() - 110, 150, 40};
+    Rectangle deleteTextBox = {(GetScreenWidth() / 2) - 75, GetScreenHeight() - 110, 150, 40};
+    Rectangle searchTextBox = {(GetScreenWidth() / 2) + 95, GetScreenHeight() - 110, 150, 40};
+
+    char addInputText[10] = "0";
+    char deleteInputText[10] = "0";
+    char searchInputText[10] = "0";
+
+    int addValue = 0;
+    int deleteValue = 0;
+    int searchValue = 0;
+
+    while (!WindowShouldClose())
+    {
+        BeginDrawing();
+        ClearBackground(WHITE);
+
+        drawTitle(titleBox, title);
+
+        if (drawButton(ajouterButton, DARKGREEN, "Ajouter"))
+        {
+            addTextBoxActive = 1;
+            deleteTextBoxActive = 0;
+            searchTextBoxActive = 0;
+        }
+
+        if (drawButton(supprimerButton, MAROON, "Supprimmer"))
+        {
+            addTextBoxActive = 0;
+            deleteTextBoxActive = 1;
+            searchTextBoxActive = 0;
+        }
+
+        if (drawButton(rechercherButton, DARKBLUE, "Rechercher"))
+        {
+            addTextBoxActive = 0;
+            deleteTextBoxActive = 0;
+            searchTextBoxActive = 1;
+        }
+
+        if (addTextBoxActive)
+        {
+            drawTextBox(addTextBox, addInputText, DARKGREEN);
+
+            if (IsKeyPressed(KEY_ENTER))
+            {
+                addValue = atoi(addInputText);
+                root = insert(root, addValue);
+
+                resetColors(root);
+
+                addInputText[0] = '0';
+                for (int i = 1; i < 10; i++)
+                {
+                    addInputText[i] = '\0';
+                }
+            }
+        }
+
+        if (deleteTextBoxActive)
+        {
+            drawTextBox(deleteTextBox, deleteInputText, MAROON);
+
+            if (IsKeyPressed(KEY_ENTER))
+            {
+                deleteValue = atoi(deleteInputText);
+                root = delete (root, deleteValue);
+
+                resetColors(root);
+
+                deleteInputText[0] = '0';
+                for (int i = 1; i < 10; i++)
+                {
+                    deleteInputText[i] = '\0';
+                }
+            }
+        }
+
+        if (searchTextBoxActive)
+        {
+            drawTextBox(searchTextBox, searchInputText, DARKBLUE);
+
+            if (IsKeyPressed(KEY_ENTER))
+            {
+                searchValue = atoi(searchInputText);
+
+                resetColors(root);
+                search(root, searchValue);
+
+                searchInputText[0] = '0';
+                for (int i = 1; i < 10; i++)
+                {
+                    searchInputText[i] = '\0';
+                }
+            }
+        }
+
+        drawTree(root, (GetScreenWidth() / 2) - 25, 100, 250);
+
+        EndDrawing();
+    }
+
+    CloseWindow();
+
+    return 0;
 }
