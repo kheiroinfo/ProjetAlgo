@@ -292,7 +292,7 @@ void drawTextBox(Rectangle textBox, char inputText[], Color textColor)
 int main()
 {
     // Initialize the Raylib window, enable fullscreen, and set target frames per second
-    InitWindow(GetScreenWidth(), GetScreenHeight(), "Visualisation d'une arbre binaire de recherche");
+    InitWindow(GetScreenWidth(), GetScreenHeight(), "Visualisation d'un arbre binaire de recherche");
     ToggleFullscreen();
     SetTargetFPS(60);
 
@@ -300,7 +300,7 @@ int main()
     node *root = NULL;
 
     // Set up the title box for displaying the program title
-    char title[47] = "Visualisation d'une arbre binaire de recherche";
+    char title[46] = "Visualisation d'un arbre binaire de recherche";
     Rectangle titleBox = {(GetScreenWidth() / 2) - (MeasureText(title, 30) / 2) - 5, 35, MeasureText(title, 30) + 10, 40};
 
     // Set up buttons for adding, deleting, and searching nodes in the tree
@@ -309,9 +309,9 @@ int main()
     Rectangle rechercherButton = {(GetScreenWidth() / 2) + 95, GetScreenHeight() - 60, 150, 40};
 
     // Initialize variables to track text box activation status
-    int addTextBoxActive = 0;
-    int deleteTextBoxActive = 0;
-    int searchTextBoxActive = 0;
+    bool addTextBoxActive = false;
+    bool deleteTextBoxActive = false;
+    bool searchTextBoxActive = false;
 
     // Set up text boxes for entering values to add, delete, or search
     Rectangle addTextBox = {(GetScreenWidth() / 2) - 245, GetScreenHeight() - 110, 150, 40};
@@ -322,11 +322,6 @@ int main()
     char addInputText[10] = "0";
     char deleteInputText[10] = "0";
     char searchInputText[10] = "0";
-
-    // Initialize variables to store numeric values entered in text boxes
-    int addValue = 0;
-    int deleteValue = 0;
-    int searchValue = 0;
 
     // Main loop for visualizing a binary search tree.
     while (!WindowShouldClose())
@@ -341,23 +336,23 @@ int main()
         // Handle button clicks and activate/deactivate text boxes accordingly
         if (drawButton(ajouterButton, DARKGREEN, "Ajouter"))
         {
-            addTextBoxActive = 1;
-            deleteTextBoxActive = 0;
-            searchTextBoxActive = 0;
+            addTextBoxActive = true;
+            deleteTextBoxActive = false;
+            searchTextBoxActive = false;
         }
 
         if (drawButton(supprimerButton, MAROON, "Supprimmer"))
         {
-            addTextBoxActive = 0;
-            deleteTextBoxActive = 1;
-            searchTextBoxActive = 0;
+            addTextBoxActive = false;
+            deleteTextBoxActive = true;
+            searchTextBoxActive = false;
         }
 
         if (drawButton(rechercherButton, DARKBLUE, "Rechercher"))
         {
-            addTextBoxActive = 0;
-            deleteTextBoxActive = 0;
-            searchTextBoxActive = 1;
+            addTextBoxActive = false;
+            deleteTextBoxActive = false;
+            searchTextBoxActive = true;
         }
 
         // Handle user input and update the tree for adding nodes
@@ -369,8 +364,7 @@ int main()
             if (IsKeyPressed(KEY_ENTER))
             {
                 // Convert input text to integer and insert into the tree
-                addValue = atoi(addInputText);
-                root = insert(root, addValue);
+                root = insert(root, atoi(addInputText));
 
                 // Reset node colors in the tree
                 resetColors(root);
@@ -393,8 +387,7 @@ int main()
             if (IsKeyPressed(KEY_ENTER))
             {
                 // Convert input text to integer and delete from the tree
-                deleteValue = atoi(deleteInputText);
-                root = delete (root, deleteValue);
+                root = delete (root, atoi(deleteInputText));
 
                 // Reset node colors in the tree
                 resetColors(root);
@@ -417,11 +410,9 @@ int main()
             if (IsKeyPressed(KEY_ENTER))
             {
                 // Convert input text to integer and search in the tree
-                searchValue = atoi(searchInputText);
-
                 // Reset node colors in the tree and highlight the searched node
                 resetColors(root);
-                search(root, searchValue);
+                search(root, atoi(searchInputText));
 
                 // Reset input text buffer
                 searchInputText[0] = '0';
