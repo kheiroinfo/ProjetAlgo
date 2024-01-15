@@ -1,6 +1,0 @@
-make.exe --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/c/Users/ISSER TECH/Documents/GitHub/ProjetAlgo'
-gcc main.c -o main.exe -O1 -Wall -std=c99 -Wno-missing-braces -I ./library/include/ -L ./library/lib/ -lraylib -lopengl32 -lgdi32 -lwinmm
-.\main.exe
-make: Leaving directory '/c/Users/ISSER TECH/Documents/GitHub/ProjetAlgo'
- 
